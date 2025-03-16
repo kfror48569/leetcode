@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maximumCandies(vector<int>& candies, long long k) {
+        long long min=0,left=1,right=0,count=0,sum=0;
+        for(int x : candies){
+            if(x>right)
+                right=x;
+        }
+        while(left<=right){
+            count=0;
+            min=left+(right-left)/2;
+            sum=0;
+            for(int x : candies){
+                count += x/min;
+            }
+            if(count>=k)
+                left=min+1;
+            else
+                right=min-1;
+        }
+
+
+        return right;
+    }
+};
+

@@ -1,0 +1,35 @@
+class Solution {
+public:
+    long long repairCars(vector<int>& ranks, int cars) {
+        long long  mid,left=0,right,time=0,max,count=0;
+        max=*max_element(ranks.begin(),ranks.end());
+        if(cars>ranks.size()){
+            right=max*(cars-ranks.size()+1)*(cars-ranks.size()+1);
+        }else{
+            right=max*(cars)*(cars);
+        }
+        while(left<right){
+            mid=left+(right-left)/2;
+            count=0;
+            for(int i=0;i<ranks.size();i++){
+                count=count+sqrt(mid/ranks[i]);
+            }
+            //cout<<mid<<endl;
+            if(count>=cars){
+                right=mid;
+            }else{
+                left=mid+1;
+            }
+        }
+        //cout<< time << endl;
+        cout<<left<<" "<<mid<<" "<<right<<" "<<endl;
+
+        return left;
+
+
+
+
+
+        return 0;
+    }
+};

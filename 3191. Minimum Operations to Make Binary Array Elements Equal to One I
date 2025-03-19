@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int times=0,where=0;
+        while(where!=nums.size()){
+            if(nums[where]==0){
+                if(where>=(nums.size()-2)){
+                    return -1;
+                }
+                for(int i=0;i<3;i++){
+                    if(nums[where+i]==0){
+                        nums[where+i]=1;
+                    }else{
+                        nums[where+i]=0;
+                    }
+                }
+                times++;
+            }
+            where++;
+        }
+        return times;
+
+        return 0;
+    }
+};
